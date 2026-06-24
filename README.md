@@ -1,4 +1,4 @@
-# ttl_convertor
+# GDI - Fair Data Point - CSV to TTL Convertor  
 
 CSV to TTL converter for GDI metadata using SeMPyRO and DCAT/HealthDCAT-AP style vocabularies.
 

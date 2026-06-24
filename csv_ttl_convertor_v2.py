@@ -219,7 +219,7 @@ def convert_csv_to_ttl(csv_path: Path, ttl_path: Path, base_uri: str = DEFAULT_B
     return graph
 
 
-def convert_input_path_to_ttl(input_path: Path, output_dir: Path, base_uri: str = DEFAULT_BASE) -> list[Path]:
+def convert_input_path_to_ttl(input_path: Path, output_dir: Path) -> list[Path]:
     validated_input = _validate_input_path(input_path)
     csv_files = _iter_csv_files(validated_input)
     if not csv_files:
@@ -251,11 +251,7 @@ def main() -> None:
         default=None,
         help="Optional output directory (defaults to output/)",
     )
-    parser.add_argument(
-        "--base-uri",
-        default=DEFAULT_BASE,
-        help="Base URI for generated dataset resources",
-    )
+
 
     args = parser.parse_args()
 
@@ -266,14 +262,9 @@ def main() -> None:
 
     output_dir = Path(args.output_dir) if args.output_dir else Path("output")
 
-    if input_path.is_file():
-        output_path = _derive_output_ttl_path(input_path)
-        if args.output_dir:
-            output_path = output_dir / output_path.name
-        convert_csv_to_ttl(input_path, output_path, base_uri=args.base_uri)
-        return
 
-    convert_input_path_to_ttl(input_path, output_dir, base_uri=args.base_uri)
+
+    convert_input_path_to_ttl(input_path, output_dir)
 
 
 if __name__ == "__main__":

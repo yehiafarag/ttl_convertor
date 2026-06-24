@@ -20,7 +20,7 @@ from csv_ttl_convertor_v2 import (
 )
 
 
-CSV_PATH = Path("data_samples/GDI_Norway_test_datasets.csv")
+CSV_PATH = Path("input/GDI_Norway_test_datasets.csv")
 VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
 
 

@@ -1,0 +1,77 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix healthdcatap: <http://healthdataportal.eu/ns/health#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://fdp.spain.ega-archive.org/catalog> a dcat:Catalog ;
+    dct:description "Catalog generated from GDI Norway CSV using SeMPyRO" ;
+    dct:identifier "https://fdp.spain.ega-archive.org/catalog" ;
+    dct:issued "2026-06-24T12:57:06.381002+00:00"^^xsd:gYearMonth ;
+    dct:title "GDI Spain-like data catalog" ;
+    dcat:dataset <https://fdp.spain.ega-archive.org/datasets/GDI-NO-D-T0001> .
+
+<http://data.gdi.eu/core/p2/ExternallyGoverned> a dct:Standard .
+
+<http://id.loc.gov/vocabulary/iso639-1/en> a dct:LinguisticSystem .
+
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> a dct:RightsStatement .
+
+<https://fdp.spain.ega-archive.org/datasets/GDI-NO-D-T0001> a dcat:Dataset ;
+    dcatap:applicableLegislation <https://data.europa.eu/eli/reg/2025/327/oj> ;
+    healthdcatap:healthCategory <http://data.gdi.eu/core/p2/HealthCategoryHumanGenetic> ;
+    dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+    dct:conformsTo <http://data.gdi.eu/core/p2/ExternallyGoverned> ;
+    dct:creator [ a foaf:Agent ;
+            dct:identifier <https://www.researchgate.net/profile/Sen-Zhao-7> ;
+            foaf:name "Sen Zhao" ] ;
+    dct:description """SYNTHETIC This dataset contains 10 tumor and normal pairs synthetic WGS data of colorectal cancer that were simulated in a standard format of Illumina paired-end reads. NEAT read simulator (version 3.0, https://github.com/zstephens/neat-genreads) is utilized to synthetize these 10 pairs tumor and normal WGS data. In the procedure of data generation, simulated parameters (i.e., sequencing error statistics, read fragment length distribution and GC% coverage bias) are learned from data models provided by NEAT. The average sequencing depth for tumor and normal samples aims to reach around 110X and 60X, respectively.
+
+For generation of synthetic normal WGS data per each sample, a germline variant profile from a real patient is down-sampled randomly, which includes 50% germline variants of such a patient. It is then mixed together with an in silico germline variant profile that is modelled randomly using an average mutation rate (0.001), finally constituting a full germline profile for normal synthetic WGS data.
+
+For generation of synthetic tumor WGS data per each sample, a pre-defined somatic short variant profile (SNVs+Indels) learn from a real CRC patient is added to the germline variant profile used for creating normal synthetic WGS data of the same patient, which is utilized to produce simulated sequences. Neither copy number profile nor structural variation profile is introduced into the tumor synthetic WGS data. Tumor content and ploidy are assumed to be 100% and 2."""@en ;
+    dct:identifier "GDI-NO-D-T0001" ;
+    dct:issued "2024-04-30T00:00:00+00:00"^^xsd:dateTime ;
+    dct:language <http://id.loc.gov/vocabulary/iso639-1/en> ;
+    dct:modified "2026-06-24T12:57:06.381866+00:00"^^xsd:dateTime ;
+    dct:publisher [ a foaf:Agent ;
+            dct:identifier <https://www.uio.no/english/index.html> ;
+            foaf:name "University of Oslo" ] ;
+    dct:title "SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en ;
+    dct:type <https://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA> ;
+    adms:versionNotes ""@en,
+        ""@nl ;
+    dcat:contactPoint [ a vcard:Kind ;
+            vcard:fn "Contact for University of Oslo" ;
+            vcard:hasEmail <mailto:senz@ifi.uio.no> ] ;
+    dcat:distribution <https://fdp.spain.ega-archive.org/datasets/GDI-NO-D-T0001/distribution> ;
+    dcat:keyword "colorectal_tumor"@en,
+        "ngs"@en,
+        "normal_tumor_pair"@en,
+        "synthetic"@en,
+        "wgs"@en ;
+    dcat:theme <https://en.wikipedia.org/wiki/Colorectal_cancer> .
+
+<https://fdp.spain.ega-archive.org/datasets/GDI-NO-D-T0001/distribution> a dcat:Distribution ;
+    dcatap:applicableLegislation <https://data.europa.eu/eli/reg/2025/327/oj> ;
+    dct:description ""@en,
+        ""@nl ;
+    dct:format "HTML" ;
+    dct:issued "2026-06-24T12:57:06.381866+00:00"^^xsd:dateTime ;
+    dct:modified "2026-06-24T12:57:06.381866+00:00"^^xsd:dateTime ;
+    dct:rights [ a dct:RightsStatement ;
+            rdfs:label ""@en,
+                ""@nl ] ;
+    dct:title "Distribution for SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en ;
+    dcat:accessURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;
+    dcat:downloadURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;
+    dcat:mediaType "text/html" .
+
+<http://gdi-norway.onemilliongenomes.eu/beacon> a rdfs:Resource .
+
+<https://data.europa.eu/eli/reg/2025/327/oj> a <http://data.europa.eu/eli/ontology#LegalResource> .
+

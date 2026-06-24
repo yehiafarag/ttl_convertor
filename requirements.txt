@@ -1,0 +1,5 @@
+pandas
+rdflib
+sempyro
+pydantic
+pytest

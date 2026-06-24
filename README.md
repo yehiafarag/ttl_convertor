@@ -4,7 +4,7 @@ CSV to TTL converter for GDI metadata using SeMPyRO and DCAT/HealthDCAT-AP style
 
 ## What this project does
 
-- Reads CSV metadata files (same format as `data_samples/GDI_Norway_test_datasets.csv`).
+- Reads CSV metadata files (same format as `input/GDI_Norway_test_datasets.csv`).
 - Converts records to RDF Turtle (`.ttl`) using SeMPyRO and `rdflib`.
 - Supports converting:
   - a single CSV file, or

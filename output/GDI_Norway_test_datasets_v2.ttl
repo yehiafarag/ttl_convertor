@@ -53,7 +53,7 @@ For generation of synthetic tumor WGS data per each sample, a pre-defined somati
     dct:rights [ a dct:RightsStatement ;
             rdfs:label ""@en,
                 ""@nl ] ;
-    dct:title "Distribution for SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en,
+    dct:title "test Distribution for SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en,
         ""@nl ;
     dcat:accessURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;
     dcat:downloadURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;

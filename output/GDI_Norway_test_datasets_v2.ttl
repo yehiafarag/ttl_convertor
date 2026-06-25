@@ -12,14 +12,14 @@
     dct:creator [ a foaf:Agent ;
             dct:identifier <https://www.researchgate.net/profile/Sen-Zhao-7> ;
             foaf:name "Sen Zhao" ] ;
-    dct:description """Test Updates SYNTHETIC This dataset contains 10 tumor and normal pairs synthetic WGS data of colorectal cancer that were simulated in a standard format of Illumina paired-end reads. NEAT read simulator (version 3.0, https://github.com/zstephens/neat-genreads) is utilized to synthetize these 10 pairs tumor and normal WGS data. In the procedure of data generation, simulated parameters (i.e., sequencing error statistics, read fragment length distribution and GC% coverage bias) are learned from data models provided by NEAT. The average sequencing depth for tumor and normal samples aims to reach around 110X and 60X, respectively.
+    dct:description """SYNTHETIC This dataset contains 10 tumor and normal pairs synthetic WGS data of colorectal cancer that were simulated in a standard format of Illumina paired-end reads. NEAT read simulator (version 3.0, https://github.com/zstephens/neat-genreads) is utilized to synthetize these 10 pairs tumor and normal WGS data. In the procedure of data generation, simulated parameters (i.e., sequencing error statistics, read fragment length distribution and GC% coverage bias) are learned from data models provided by NEAT. The average sequencing depth for tumor and normal samples aims to reach around 110X and 60X, respectively.
 
 For generation of synthetic normal WGS data per each sample, a germline variant profile from a real patient is down-sampled randomly, which includes 50% germline variants of such a patient. It is then mixed together with an in silico germline variant profile that is modelled randomly using an average mutation rate (0.001), finally constituting a full germline profile for normal synthetic WGS data.
 
 For generation of synthetic tumor WGS data per each sample, a pre-defined somatic short variant profile (SNVs+Indels) learn from a real CRC patient is added to the germline variant profile used for creating normal synthetic WGS data of the same patient, which is utilized to produce simulated sequences. Neither copy number profile nor structural variation profile is introduced into the tumor synthetic WGS data. Tumor content and ploidy are assumed to be 100% and 2."""@en ;
     dct:identifier "GDI-NO-D-T0001" ;
     dct:issued "2024-04-30T00:00:00+00:00"^^xsd:dateTime ;
-    dct:modified "2026-06-25T13:48:19.865125+00:00"^^xsd:dateTime ;
+    dct:modified "2026-06-25T15:11:14.244168+00:00"^^xsd:dateTime ;
     dct:provenance [ a dct:ProvenanceStatement ;
             rdfs:label ""@en,
                 ""@nl ] ;
@@ -48,12 +48,12 @@ For generation of synthetic tumor WGS data per each sample, a pre-defined somati
     dct:description ""@en,
         ""@nl ;
     dct:format "HTML" ;
-    dct:issued "2026-06-25T13:48:19.865567+00:00"^^xsd:dateTime ;
-    dct:modified "2026-06-25T13:48:19.865592+00:00"^^xsd:dateTime ;
+    dct:issued "2026-06-25T15:11:14.244594+00:00"^^xsd:dateTime ;
+    dct:modified "2026-06-25T15:11:14.244616+00:00"^^xsd:dateTime ;
     dct:rights [ a dct:RightsStatement ;
             rdfs:label ""@en,
                 ""@nl ] ;
-    dct:title "test Distribution for SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en,
+    dct:title "Distribution for SYNTHETIC Norwegian Colorectal Cancer genomic dataset generated in EOSC4Cancer"@en,
         ""@nl ;
     dcat:accessURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;
     dcat:downloadURL <http://gdi-norway.onemilliongenomes.eu/beacon> ;

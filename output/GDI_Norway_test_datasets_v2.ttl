@@ -7,6 +7,15 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://gdi-norway.onemilliongenomes.eu/catalog/2> a dcat:Catalog ;
+    dct:description "Prod datasets for the Genomic Data Infrastructure (GDI) of Norway." ;
+    dct:identifier "http://gdi-norway.onemilliongenomes.eu/catalog/2" ;
+    dct:issued "2026-06-25T15:12:30.538640+00:00"^^xsd:dateTime ;
+    dct:title "GDI Norway prod data catalog" ;
+    dcat:dataset <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001> .
+
+<http://data.gdi.eu/core/p2/ExternallyGoverned> a dct:Standard .
+
 <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001> a dcat:Dataset ;
     dct:conformsTo <http://data.gdi.eu/core/p2/ExternallyGoverned> ;
     dct:creator [ a foaf:Agent ;
@@ -19,7 +28,7 @@ For generation of synthetic normal WGS data per each sample, a germline variant 
 For generation of synthetic tumor WGS data per each sample, a pre-defined somatic short variant profile (SNVs+Indels) learn from a real CRC patient is added to the germline variant profile used for creating normal synthetic WGS data of the same patient, which is utilized to produce simulated sequences. Neither copy number profile nor structural variation profile is introduced into the tumor synthetic WGS data. Tumor content and ploidy are assumed to be 100% and 2."""@en ;
     dct:identifier "GDI-NO-D-T0001" ;
     dct:issued "2024-04-30T00:00:00+00:00"^^xsd:dateTime ;
-    dct:modified "2026-06-25T15:11:14.244168+00:00"^^xsd:dateTime ;
+    dct:modified "2026-06-25T15:12:30.540227+00:00"^^xsd:dateTime ;
     dct:provenance [ a dct:ProvenanceStatement ;
             rdfs:label ""@en,
                 ""@nl ] ;
@@ -41,15 +50,13 @@ For generation of synthetic tumor WGS data per each sample, a pre-defined somati
         "wgs"@en ;
     dcat:theme <https://en.wikipedia.org/wiki/Colorectal_cancer> .
 
-<http://data.gdi.eu/core/p2/ExternallyGoverned> a dct:Standard .
-
 <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001/distribution> a dcat:Distribution ;
     dcatap:applicableLegislation <https://data.europa.eu/eli/reg/2025/327/oj> ;
     dct:description ""@en,
         ""@nl ;
     dct:format "HTML" ;
-    dct:issued "2026-06-25T15:11:14.244594+00:00"^^xsd:dateTime ;
-    dct:modified "2026-06-25T15:11:14.244616+00:00"^^xsd:dateTime ;
+    dct:issued "2026-06-25T15:12:30.540474+00:00"^^xsd:dateTime ;
+    dct:modified "2026-06-25T15:12:30.540494+00:00"^^xsd:dateTime ;
     dct:rights [ a dct:RightsStatement ;
             rdfs:label ""@en,
                 ""@nl ] ;

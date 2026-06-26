@@ -12,7 +12,7 @@
     dct:identifier "http://gdi-norway.onemilliongenomes.eu/catalog/2" ;
     dct:issued "2026-06-25T15:12:30.538640+00:00"^^xsd:dateTime ;
     dct:title "GDI Norway prod data catalog" ;
-    dcat:dataset <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001> .
+    dcat:dataset <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0002> .
 
 <http://data.gdi.eu/core/p2/ExternallyGoverned> a dct:Standard .
 
@@ -26,7 +26,7 @@
 For generation of synthetic normal WGS data per each sample, a germline variant profile from a real patient is down-sampled randomly, which includes 50% germline variants of such a patient. It is then mixed together with an in silico germline variant profile that is modelled randomly using an average mutation rate (0.001), finally constituting a full germline profile for normal synthetic WGS data.
 
 For generation of synthetic tumor WGS data per each sample, a pre-defined somatic short variant profile (SNVs+Indels) learn from a real CRC patient is added to the germline variant profile used for creating normal synthetic WGS data of the same patient, which is utilized to produce simulated sequences. Neither copy number profile nor structural variation profile is introduced into the tumor synthetic WGS data. Tumor content and ploidy are assumed to be 100% and 2."""@en ;
-    dct:identifier "GDI-NO-D-T0001" ;
+    dct:identifier "GDI-NO-D-T0002" ;
     dct:issued "2024-04-30T00:00:00+00:00"^^xsd:dateTime ;
     dct:modified "2026-06-25T15:12:30.540227+00:00"^^xsd:dateTime ;
     dct:provenance [ a dct:ProvenanceStatement ;
@@ -42,7 +42,7 @@ For generation of synthetic tumor WGS data per each sample, a pre-defined somati
             vcard:fn "Sen Zhao" ;
             vcard:hasEmail <mailto:senz@ifi.uio.no> ;
             vcard:hasUID <https://www.researchgate.net/profile/Sen-Zhao-7> ] ;
-    dcat:distribution <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001/distribution> ;
+    dcat:distribution <http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0002/distribution> ;
     dcat:keyword "colorectal_tumor"@en,
         "ngs"@en,
         "normal_tumor_pair"@en,
@@ -50,7 +50,7 @@ For generation of synthetic tumor WGS data per each sample, a pre-defined somati
         "wgs"@en ;
     dcat:theme <https://en.wikipedia.org/wiki/Colorectal_cancer> .
 
-<http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001/distribution> a dcat:Distribution ;
+<http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0002/distribution> a dcat:Distribution ;
     dcatap:applicableLegislation <https://data.europa.eu/eli/reg/2025/327/oj> ;
     dct:description ""@en,
         ""@nl ;

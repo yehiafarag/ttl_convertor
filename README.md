@@ -12,6 +12,7 @@ This converter targets GDI (Genomic Data Infrastructure) datasets for Norway, ge
 - **RDF validation**: Generated Turtle files are valid RDF and can be parsed and queried
 - **Comprehensive metadata**: Includes contact points, creators, publishers, keywords, themes, and external access links
 - **Folder structure preservation**: Maintains nested directory structure when batch processing
+- **No accidental overwrite**: If an output file already exists, a new file is created with an index suffix (for example, `dataset_1.ttl`)
 
 ## Quick Start
 

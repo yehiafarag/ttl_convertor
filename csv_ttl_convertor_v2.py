@@ -250,6 +250,20 @@ def iter_csv_files(input_path: Path) -> list:
     return sorted(p for p in input_path.rglob("*.csv") if p.is_file())
 
 
+def next_available_output_path(target_path: Path) -> Path:
+    if not target_path.exists():
+        return target_path
+
+    index = 1
+    while True:
+        candidate = target_path.with_name(
+            f"{target_path.stem}_{index}{target_path.suffix}"
+        )
+        if not candidate.exists():
+            return candidate
+        index += 1
+
+
 # ---------------- RDF builders ---------------- #
 
 def add_catalog(
@@ -505,7 +519,8 @@ def convert_input_path_to_ttl(
             relative_parent = Path("")
 
         target_dir = output_dir / relative_parent
-        ttl_path = target_dir / csv_file.with_suffix(".ttl").name
+        requested_ttl_path = target_dir / csv_file.with_suffix(".ttl").name
+        ttl_path = next_available_output_path(requested_ttl_path)
 
         convert_csv_to_ttl(
             csv_path=csv_file,

@@ -644,6 +644,59 @@ class TestConvertInputPathToTtl:
                 catalog_description=DEFAULT_CATALOG_DESCRIPTION,
             )
 
+    def test_convert_does_not_overwrite_existing_ttl_file(self, tmp_path: Path):
+        test_csv = tmp_path / "dataset.csv"
+        test_csv.write_text(
+            "id;name;description;author_name;author_id;keywords;publisher_name;publisher_id;theme;contact_point;issued;external_link\n"
+            "ds1;Dataset 1;Desc 1;Author;orcid;key;Pub;org;;email@test.com;2023-01-01;http://link.com\n",
+            encoding="utf-8",
+        )
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+        existing_ttl = output_dir / "dataset.ttl"
+        existing_ttl.write_text("existing content", encoding="utf-8")
+
+        generated = convert_input_path_to_ttl(
+            test_csv,
+            output_dir,
+            base_uri="http://example.com",
+            production_cat=False,
+            catalog_path=DEFAULT_CATALOG_PATH,
+            catalog_title=DEFAULT_CATALOG_TITLE,
+            catalog_description=DEFAULT_CATALOG_DESCRIPTION,
+        )
+
+        assert generated[0] == output_dir / "dataset_1.ttl"
+        assert generated[0].exists()
+        assert existing_ttl.read_text(encoding="utf-8") == "existing content"
+
+    def test_convert_uses_next_free_index_for_existing_outputs(self, tmp_path: Path):
+        test_csv = tmp_path / "dataset.csv"
+        test_csv.write_text(
+            "id;name;description;author_name;author_id;keywords;publisher_name;publisher_id;theme;contact_point;issued;external_link\n"
+            "ds1;Dataset 1;Desc 1;Author;orcid;key;Pub;org;;email@test.com;2023-01-01;http://link.com\n",
+            encoding="utf-8",
+        )
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+        (output_dir / "dataset.ttl").write_text("base", encoding="utf-8")
+        (output_dir / "dataset_1.ttl").write_text("index1", encoding="utf-8")
+
+        generated = convert_input_path_to_ttl(
+            test_csv,
+            output_dir,
+            base_uri="http://example.com",
+            production_cat=False,
+            catalog_path=DEFAULT_CATALOG_PATH,
+            catalog_title=DEFAULT_CATALOG_TITLE,
+            catalog_description=DEFAULT_CATALOG_DESCRIPTION,
+        )
+
+        assert generated[0] == output_dir / "dataset_2.ttl"
+        assert generated[0].exists()
+
     def test_convert_with_production_flag_adds_catalog(self, tmp_path: Path):
         csv_dir = tmp_path / "csv_files"
         csv_dir.mkdir()

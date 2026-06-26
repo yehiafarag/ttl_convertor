@@ -16,7 +16,7 @@
 
 <http://data.gdi.eu/core/p2/ExternallyGoverned> a dct:Standard .
 
-<http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0001> a dcat:Dataset ;
+<http://gdi-norway.onemilliongenomes.eu/dataset/GDI-NO-D-T0002> a dcat:Dataset ;
     dct:conformsTo <http://data.gdi.eu/core/p2/ExternallyGoverned> ;
     dct:creator [ a foaf:Agent ;
             dct:identifier <https://www.researchgate.net/profile/Sen-Zhao-7> ;

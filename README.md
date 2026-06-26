@@ -13,6 +13,7 @@ This converter targets GDI (Genomic Data Infrastructure) datasets for Norway, ge
 - **Comprehensive metadata**: Includes contact points, creators, publishers, keywords, themes, and external access links
 - **Folder structure preservation**: Maintains nested directory structure when batch processing
 - **No accidental overwrite**: If an output file already exists, a new file is created with an index suffix (for example, `dataset_1.ttl`)
+- **Dataset type fallback**: If the CSV does not include a `type` column, the converter adds `dct:type` with the synthetic dataset URI
 
 ## Quick Start
 
@@ -93,6 +94,7 @@ All of the following columns must be present in the input CSV:
 | contact_point | Contact email address | contact@example.org |
 | issued | Publication date | 2023-06-15 or 15-06-2023 |
 | external_link | URL to access/download the dataset | http://example.org/data.html |
+| type | Optional dataset type URI | https://publications.europa.eu/resource/authority/dataset-type/TEST_DATASET |
 
 ### Date Formats Supported
 

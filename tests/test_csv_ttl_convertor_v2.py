@@ -12,6 +12,7 @@ from csv_ttl_convertor_v2 import (
     DEFAULT_CATALOG_DESCRIPTION,
     DEFAULT_CATALOG_PATH,
     DEFAULT_CATALOG_TITLE,
+    DEFAULT_DATASET_TYPE,
     DEFAULT_CONFORMS_TO,
     DEFAULT_DISTRIBUTION_FORMAT,
     DEFAULT_DISTRIBUTION_MEDIA_TYPE,
@@ -518,6 +519,44 @@ class TestConvertCsvToTtl:
         # Check that custom base URI is in the dataset URI
         dataset_uri = datasets[0]
         assert custom_base in str(dataset_uri)
+
+    def test_convert_csv_adds_default_dataset_type_when_missing(self, tmp_path: Path):
+        test_csv = tmp_path / "test.csv"
+        test_csv.write_text(
+            "id;name;description;author_name;author_id;keywords;publisher_name;publisher_id;theme;contact_point;issued;external_link\n"
+            "ds1;Dataset 1;Desc 1;Author;orcid;key;Pub;org;;email@test.com;2023-01-01;http://link.com\n",
+            encoding="utf-8"
+        )
+
+        output_ttl = tmp_path / "test.ttl"
+        convert_csv_to_ttl(test_csv, output_ttl, base_uri="http://example.com")
+
+        parsed = Graph()
+        parsed.parse(output_ttl, format="turtle")
+        dataset_uri = URIRef("http://example.com/dataset/ds1")
+
+        assert (dataset_uri, DCTERMS.type, DEFAULT_DATASET_TYPE) in parsed
+
+    def test_convert_csv_uses_csv_dataset_type_when_present(self, tmp_path: Path):
+        test_csv = tmp_path / "test.csv"
+        test_csv.write_text(
+            "id;name;description;author_name;author_id;keywords;publisher_name;publisher_id;theme;contact_point;issued;external_link;type\n"
+            "ds1;Dataset 1;Desc 1;Author;orcid;key;Pub;org;;email@test.com;2023-01-01;http://link.com;https://publications.europa.eu/resource/authority/dataset-type/TEST_DATASET\n",
+            encoding="utf-8"
+        )
+
+        output_ttl = tmp_path / "test.ttl"
+        convert_csv_to_ttl(test_csv, output_ttl, base_uri="http://example.com")
+
+        parsed = Graph()
+        parsed.parse(output_ttl, format="turtle")
+        dataset_uri = URIRef("http://example.com/dataset/ds1")
+
+        assert (
+            dataset_uri,
+            DCTERMS.type,
+            URIRef("https://publications.europa.eu/resource/authority/dataset-type/TEST_DATASET"),
+        ) in parsed
 
     def test_convert_csv_validates_required_columns(self, tmp_path: Path):
         invalid_csv = tmp_path / "invalid.csv"

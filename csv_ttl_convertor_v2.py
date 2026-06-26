@@ -23,6 +23,9 @@ DEFAULT_CATALOG_PATH = "catalog/2"
 
 DEFAULT_CONFORMS_TO = URIRef("http://data.gdi.eu/core/p2/ExternallyGoverned")
 DEFAULT_THEME = URIRef("http://publications.europa.eu/resource/authority/data-theme/HEAL")
+DEFAULT_DATASET_TYPE = URIRef(
+    "https://publications.europa.eu/resource/authority/dataset-type/SYNTHETIC_DATA"
+)
 
 DEFAULT_APPLICABLE_LEGISLATION = URIRef("https://data.europa.eu/eli/reg/2025/327/oj")
 DEFAULT_DISTRIBUTION_FORMAT = "HTML"
@@ -404,8 +407,16 @@ def add_dataset(
     title = clean(row.get("name"))
     description = clean(row.get("description"))
     issued = parse_issued_datetime(clean(row.get("issued")))
-
+    dataset_type = clean(row.get("type"))
     graph.add((dataset_ref, RDF.type, DCAT.Dataset))
+
+    if dataset_type:
+        dataset_type_ref = as_uri(dataset_type, fallback=DEFAULT_DATASET_TYPE)
+    else:
+        dataset_type_ref = DEFAULT_DATASET_TYPE
+
+    if dataset_type_ref:
+        graph.add((dataset_ref, DCTERMS.type, dataset_type_ref))
 
     if dataset_id:
         graph.add((dataset_ref, DCTERMS.identifier, Literal(dataset_id)))
